@@ -1,0 +1,27 @@
+# Created by Nelson Durrant, Sep 2024
+#
+# DOCKER COMPOSE FILE (VEHICLE IMAGE, ARM64)
+
+services:
+  agrobot:
+    image: snelsondurrant/agrobot:arm64
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: agrobot
+    user: agrobot
+    network_mode: host
+    privileged: true
+    volumes:
+      - ../bag:/home/agrobot/bag:rw
+      - ../config:/home/agrobot/config:rw
+      - ../agrobot-ros2:/home/agrobot/ros2_ws
+      - ../agrobot-teensy:/home/agrobot/teensy_ws
+      - ../agrobot-gpio:/home/agrobot/gpio
+      - /etc/localtime:/etc/localtime:ro # Syncs the container's time with the host
+      - /dev:/dev:rw
+      - /run/udev:/run/udev:ro
+    command: /bin/bash
+    stdin_open: true  # Equivalent to -it in docker run
+    tty: true  # Equivalent to -it in docker run
+    restart: always  # Optional: Keeps the container running after exit unless you want it to be removed like with --rm
