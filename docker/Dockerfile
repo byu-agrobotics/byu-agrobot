@@ -19,7 +19,8 @@ RUN apt update && apt upgrade -y
 RUN mkdir -p -m0755 /etc/apt/keyrings
 RUN apt update && apt install -y curl \
     wget \
-    unzip 
+    unzip \
+    python3-pip
 RUN curl https://download.koromix.dev/debian/koromix-archive-keyring.gpg -o /etc/apt/keyrings/koromix-archive-keyring.gpg
 RUN echo "deb [signed-by=/etc/apt/keyrings/koromix-archive-keyring.gpg] https://download.koromix.dev/debian stable main" > /etc/apt/sources.list.d/koromix.dev-stable.list
 RUN apt update && apt install -y tytools
@@ -109,8 +110,7 @@ RUN apt update && apt install -y \
     python3-libgpiod \
     ros-humble-rosbag2-storage-mcap \
     netcat-openbsd \
-    rsync \
-    python3-pip
+    rsync 
 USER $UNAME
 
 # Install Python dependencies
