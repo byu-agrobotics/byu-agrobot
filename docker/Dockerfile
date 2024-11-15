@@ -6,11 +6,9 @@
 
 FROM ros:humble-ros-base
 
-# Check architecture
+ARG NAME=agrobot
+ARG DEBIAN_FRONTEND=noninteractive
 ARG TARGETARCH
-
-# Set desired username/password
-ARG UNAME=agrobot
 
 # Update and upgrade
 RUN apt update && apt upgrade -y
@@ -26,17 +24,17 @@ RUN echo "deb [signed-by=/etc/apt/keyrings/koromix-archive-keyring.gpg] https://
 RUN apt update && apt install -y tytools
 
 # Set up a new user
-RUN useradd -ms /bin/bash $UNAME
-RUN usermod -aG sudo $UNAME
-RUN usermod -aG dialout $UNAME
-RUN echo "$UNAME:$UNAME" | chpasswd
-USER $UNAME
-WORKDIR /home/$UNAME
+RUN useradd -ms /bin/bash $NAME
+RUN usermod -aG sudo $NAME
+RUN usermod -aG dialout $NAME
+RUN echo "$NAME:$NAME" | chpasswd
+USER $NAME
+WORKDIR /home/$NAME
 
 # Install PlatformIO
 USER root
 RUN apt install -y python3-venv
-USER $UNAME
+USER $NAME
 
 RUN curl -fsSL -o get-platformio.py https://raw.githubusercontent.com/platformio/platformio-core-installer/master/get-platformio.py
 RUN python3 get-platformio.py
@@ -46,24 +44,24 @@ RUN rm get-platformio.py
 RUN mkdir -p /usr/local/bin
 
 USER root
-RUN ln -s /home/$UNAME/.platformio/penv/bin/platformio /usr/local/bin/platformio
-RUN ln -s /home/$UNAME/.platformio/penv/bin/pio /usr/local/bin/pio
-RUN ln -s /home/$UNAME/.platformio/penv/bin/piodebuggdb /usr/local/bin/piodebuggdb
-USER $UNAME
+RUN ln -s /home/$NAME/.platformio/penv/bin/platformio /usr/local/bin/platformio
+RUN ln -s /home/$NAME/.platformio/penv/bin/pio /usr/local/bin/pio
+RUN ln -s /home/$NAME/.platformio/penv/bin/piodebuggdb /usr/local/bin/piodebuggdb
+USER $NAME
 
 # Set up ROS sourcing
-RUN echo "source /opt/ros/humble/setup.bash" >> /home/$UNAME/.bashrc
+RUN echo "source /opt/ros/humble/setup.bash" >> /home/$NAME/.bashrc
 
 # Install the micro-ROS agent
 RUN mkdir microros_ws
 
-WORKDIR /home/$UNAME/microros_ws
+WORKDIR /home/$NAME/microros_ws
 RUN git clone -b humble https://github.com/micro-ROS/micro_ros_setup.git src/micro_ros_setup
 RUN rosdep update
 
 USER root
 RUN rosdep install --from-paths src --ignore-src -y
-USER $UNAME
+USER $NAME
 
 SHELL ["/bin/bash", "-c"] 
 RUN source /opt/ros/humble/setup.bash && colcon build
@@ -71,7 +69,7 @@ RUN source /opt/ros/humble/setup.bash && source install/setup.bash && ros2 run m
 RUN source /opt/ros/humble/setup.bash && source install/setup.bash && ros2 run micro_ros_setup build_agent.sh
 SHELL ["/bin/sh", "-c"]
 
-WORKDIR /home/$UNAME
+WORKDIR /home/$NAME
 
 # Install development dependencies (rqt, plotjuggler, documentation, etc.)
 USER root
@@ -92,7 +90,7 @@ RUN if [ "$TARGETARCH" = "amd64" ]; then \
     && apt clean \
     && rm -rf /var/lib/apt/lists/*; \
     fi
-USER $UNAME
+USER $NAME
 
 # Install development Python dependencies
 RUN if [ "$TARGETARCH" = "amd64" ]; then \
@@ -111,16 +109,16 @@ RUN apt update && apt install -y \
     ros-humble-rosbag2-storage-mcap \
     netcat-openbsd \
     rsync 
-USER $UNAME
+USER $NAME
 
 # Install Python dependencies
 RUN pip3 install numpy==1.26.0 \
     scipy \
     matplotlib \
     pyproj
-RUN echo "export PATH=$PATH:/home/$UNAME/.local/bin" >> /home/$UNAME/.bashrc
+RUN echo "export PATH=$PATH:/home/$NAME/.local/bin" >> /home/$NAME/.bashrc
 
 # Update and upgrade
 USER root
 RUN apt update && apt upgrade -y
-USER $UNAME
+USER $NAME

@@ -6,10 +6,8 @@
 
 services:
   agrobot:
-    image: snelsondurrant/agrobot:amd64
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: snelsondurrant/agrobot:latest
+    platform: linux/amd64
     container_name: agrobot
     user: agrobot
     network_mode: host
