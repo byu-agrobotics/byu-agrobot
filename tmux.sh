@@ -47,11 +47,11 @@ case $1 in
 
       tmux send-keys -t agrobot:0.0 "cd ~/ros2_ws" ENTER
       tmux send-keys -t agrobot:0.0 "ls" ENTER
-      tmux send-keys -t agrobot:0.0 "bash launch.sh" # Don't start just yet
+      tmux send-keys -t agrobot:0.0 "bash launch.sh <task>" # Don't start just yet
       tmux send-keys -t agrobot:0.1 "cd ~/ros2_ws" ENTER
       tmux send-keys -t agrobot:0.1 "bash test.sh" # Don't start just yet
       tmux send-keys -t agrobot:0.2 "cd ~/ros2_ws" ENTER
-      tmux send-keys -t agrobot:0.2 "bash init.sh" # Don't start just yet
+      tmux send-keys -t agrobot:0.2 "bash init.sh <task>" # Don't start just yet
       tmux send-keys -t agrobot:0.3 "cd ~/config" ENTER
       tmux send-keys -t agrobot:0.3 "cat vehicle_params.yaml" ENTER
 
