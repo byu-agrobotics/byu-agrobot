@@ -71,6 +71,8 @@ SHELL ["/bin/sh", "-c"]
 
 WORKDIR /home/$NAME
 
+### Dependencies copied from the CougUV project ###
+
 # Install development dependencies (rqt, plotjuggler, documentation, etc.)
 USER root
 RUN if [ "$TARGETARCH" = "amd64" ]; then \
