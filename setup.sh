@@ -35,7 +35,7 @@ if [ "$(uname -m)" == "aarch64" ]; then
   # Install dependencies
   sudo apt update
   sudo apt upgrade -y
-  sudo apt install -y vim tmux chrony git mosh
+  sudo apt install -y vim tmux git mosh
 
   # Set up volumes
   mkdir bag
@@ -60,7 +60,7 @@ else
 
   # Install dependencies
   sudo apt update
-  sudo apt install -y vim tmux git
+  sudo apt install -y vim tmux git mosh
 
   # Set up volumes
   mkdir bag
