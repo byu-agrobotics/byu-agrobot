@@ -117,7 +117,8 @@ USER $NAME
 RUN pip3 install numpy==1.26.0 \
     scipy \
     matplotlib \
-    pyproj
+    pyproj \
+    serial
 RUN echo "export PATH=$PATH:/home/$NAME/.local/bin" >> /home/$NAME/.bashrc
 
 # Update and upgrade
