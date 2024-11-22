@@ -125,3 +125,5 @@ RUN echo "export PATH=$PATH:/home/$NAME/.local/bin" >> /home/$NAME/.bashrc
 USER root
 RUN apt update && apt upgrade -y
 USER $NAME
+
+RUN export "RCUTILS_COLORIZED_OUTPUT=1" >> /home/$NAME/.bashrc
