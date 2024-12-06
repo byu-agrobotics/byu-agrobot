@@ -4,7 +4,7 @@
 
 services:
   agrobot:
-    image: agrobot/agrobot:latest
+    image: snelsondurrant/agrobot:latest
     platform: linux/arm64
     container_name: agrobot
     user: agrobot
