@@ -27,7 +27,7 @@ if [ "$(uname -m)" == "aarch64" ]; then
       curl -fsSL https://get.docker.com -o get-docker.sh
       sudo sh get-docker.sh
       rm get-docker.sh
-      sudo usermod -aG docker $USERNAME
+      sudo usermod -aG docker agrobot
   else
       printWarning "Docker is already installed"
   fi
