@@ -43,12 +43,12 @@ if [ "$(uname -m)" == "aarch64" ]; then
   cp -r templates/* config/
 
   # Set up udev rules
-  sudo ln -s config/local/00-teensy.rules /etc/udev/rules.d/00-teensy.rules
+  sudo cp config/local/00-teensy.rules /etc/udev/rules.d/00-teensy.rules
   sudo udevadm control --reload-rules
   sudo udevadm trigger
 
   # Set up config files
-  sudo ln -s config/local/.tmux.conf ~/.tmux.conf
+  sudo cp config/local/.tmux.conf ~/.tmux.conf
 
   # Copy repos from GitHub
   git clone https://github.com/BYUAgrobotics/agrobot-ros2.git
@@ -68,7 +68,7 @@ else
   cp -r templates/* config/
 
   # Set up config files
-  sudo ln -s config/local/.tmux.conf ~/.tmux.conf
+  sudo cp config/local/.tmux.conf ~/.tmux.conf
 
   # Copy repos from GitHub
   git clone https://github.com/BYUAgrobotics/agrobot-ros2.git
