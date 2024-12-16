@@ -39,6 +39,10 @@ case $1 in
       printInfo "Loading the development image..."
       docker compose -f docker/docker-compose-dev.yaml up -d
     fi
+
+    # Quick permission fix for Teensy access in the container
+    docker exec --user root agrobot bash -c "bash /home/agrobot/teensy_ws/permission_fix.sh"
+
     docker exec -it agrobot bash
   ;;
 esac
