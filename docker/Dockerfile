@@ -127,3 +127,11 @@ RUN apt update && apt upgrade -y
 USER $NAME
 
 RUN export "RCUTILS_COLORIZED_OUTPUT=1" >> /home/$NAME/.bashrc
+
+# Ashton's camera dependencies
+USER root
+RUN apt update && apt install -y \
+    nano \
+    libopencv-dev \
+    python3-opencv
+USER $NAME
