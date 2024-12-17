@@ -41,7 +41,7 @@ case $1 in
     fi
 
     # Quick permission fix for Teensy access in the container
-    docker exec --user root agrobot bash -c "bash /home/agrobot/teensy_ws/permission_fix.sh"
+    # docker exec --user root agrobot bash -c "bash /home/agrobot/teensy_ws/permission_fix.sh"
 
     docker exec -it agrobot bash
   ;;
