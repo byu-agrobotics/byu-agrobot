@@ -72,8 +72,6 @@ SHELL ["/bin/sh", "-c"]
 
 WORKDIR /home/$NAME
 
-### Dependencies copied from the CougUV project ###
-
 # Install development dependencies (rqt, plotjuggler, documentation, etc.)
 USER root
 RUN if [ "$TARGETARCH" = "amd64" ]; then \
@@ -88,8 +86,6 @@ RUN if [ "$TARGETARCH" = "amd64" ]; then \
     gir1.2-gtk-3.0 \
     x11-apps \
     ros-humble-rqt* \
-    ros-humble-plotjuggler-ros \
-    python3-rosdoc2 \
     && apt clean \
     && rm -rf /var/lib/apt/lists/*; \
     fi
@@ -101,6 +97,7 @@ RUN if [ "$TARGETARCH" = "amd64" ]; then \
     fi
 
 # Install dependencies
+# (Might not all be used, taken from CougUV code)
 USER root
 RUN apt update && apt install -y \
     vim \
@@ -117,9 +114,7 @@ USER $NAME
 # Install Python dependencies
 RUN pip3 install numpy==1.26.0 \
     scipy \
-    matplotlib \
-    pyproj \
-    serial
+    matplotlib
 RUN echo "export PATH=$PATH:/home/$NAME/.local/bin" >> /home/$NAME/.bashrc
 
 # Update and upgrade
@@ -134,5 +129,6 @@ USER root
 RUN apt update && apt install -y \
     nano \
     libopencv-dev \
-    python3-opencv
+    python3-opencv \
+    v4l-utils
 USER $NAME
