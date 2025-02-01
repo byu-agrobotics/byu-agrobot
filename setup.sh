@@ -47,8 +47,9 @@ if [ "$(uname -m)" == "aarch64" ]; then
   sudo udevadm control --reload-rules
   sudo udevadm trigger
 
-  # Set up config files
+  # Set up config files and delete local folder
   sudo cp config/local/.tmux.conf ~/.tmux.conf
+  rm -rf config/local
 
   # Copy repos from GitHub
   git clone https://github.com/BYUAgrobotics/agrobot-ros2.git
@@ -67,8 +68,9 @@ else
   mkdir config
   cp -r templates/* config/
 
-  # Set up config files
+  # Set up config files and delete local folder
   sudo cp config/local/.tmux.conf ~/.tmux.conf
+  rm -rf config/local
 
   # Copy repos from GitHub
   git clone https://github.com/BYUAgrobotics/agrobot-ros2.git
