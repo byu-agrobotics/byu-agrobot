@@ -13,7 +13,6 @@ services:
     network_mode: host
     environment:
       DISPLAY: $DISPLAY # Required for GUI applications
-      MPLBACKEND: Qt5Agg # Required for GUI applications
     privileged: true
     volumes:
       - ../bag:/home/agrobot/bag:rw

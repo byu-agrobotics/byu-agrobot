@@ -72,42 +72,12 @@ SHELL ["/bin/sh", "-c"]
 
 WORKDIR /home/$NAME
 
-# Install development dependencies (rqt, plotjuggler, documentation, etc.)
-USER root
-RUN if [ "$TARGETARCH" = "amd64" ]; then \
-    apt update && apt install -y \
-    libx11-dev \
-    libxext-dev \
-    libxrender-dev \
-    libxrandr-dev \
-    qtbase5-dev \
-    libqt5x11extras5 \
-    python3-gi \
-    gir1.2-gtk-3.0 \
-    x11-apps \
-    ros-humble-rqt* \
-    && apt clean \
-    && rm -rf /var/lib/apt/lists/*; \
-    fi
-USER $NAME
-
-# Install development Python dependencies
-RUN if [ "$TARGETARCH" = "amd64" ]; then \
-    pip3 install --no-cache-dir PyQt5; \
-    fi
-
 # Install dependencies
-# (Might not all be used, taken from CougUV code)
 USER root
 RUN apt update && apt install -y \
     vim \
+    nano \
     psmisc \
-    network-manager \
-    systemd \
-    libgps-dev \
-    python3-libgpiod \
-    ros-humble-rosbag2-storage-mcap \
-    netcat-openbsd \
     rsync 
 USER $NAME
 
@@ -122,12 +92,12 @@ USER root
 RUN apt update && apt upgrade -y
 USER $NAME
 
+# Colorize the ROS 2 logging output
 RUN export "RCUTILS_COLORIZED_OUTPUT=1" >> /home/$NAME/.bashrc
 
 # Ashton's camera dependencies
 USER root
 RUN apt update && apt install -y \
-    nano \
     libopencv-dev \
     python3-opencv \
     v4l-utils
