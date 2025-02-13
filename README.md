@@ -10,7 +10,7 @@ This README gives a simple guide to working with the Agrobot repository.
 
 - Install Docker Desktop on your Windows machine by following the instructions [here](https://docs.docker.com/desktop/), and enable the WSL 2 backend by following the instructions [here](https://docs.docker.com/desktop/windows/wsl/).
 
-- Open a WSL terminal and clone this repo into your Linux environment using `git clone https://github.com/BYUMarsRover/Autonomy-ROS2.git`.
+- Open a WSL terminal and clone this repo into your Linux environment using `git clone https://github.com/BYUAgrobotics/AgRobot.git`.
 
 - Run `bash compose.sh` to launch and enter the Docker container. This should pull the latest Docker image from Docker Hub, and might take a couple minutes the first time you run it.
 
@@ -32,7 +32,7 @@ This README gives a simple guide to working with the Agrobot repository.
 
 **Helpful Resources:**
 
-GitHub Pull Request Tutorial - [https://docs.github.com/en/get-started/start-your-journey/hello-world](https://docs.github.com/en/get-started/start-your-journey/hello-world)
+GitHub Quickstart Tutorial - [https://docs.github.com/en/get-started/start-your-journey/hello-world](https://docs.github.com/en/get-started/start-your-journey/hello-world)
 
 Docker Concepts and Tutorials - [https://docs.docker.com/get-started/introduction/whats-next/](https://docs.docker.com/get-started/introduction/whats-next/)
 
