@@ -4,7 +4,7 @@
 # - The cloud-hosted images will rebuild each time you push changes to this file
 # - This Dockerfile will check the architecture of the target device and build the appropriate image
 
-FROM ros:humble-ros-base
+FROM ros:humble-ros-base 
 
 ARG NAME=agrobot
 ARG DEBIAN_FRONTEND=noninteractive
