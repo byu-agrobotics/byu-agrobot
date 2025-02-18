@@ -1,14 +1,12 @@
 # Created by Nelson Durrant, Sep 2024
 #
-# DOCKER FILE FOR BOTH VEHICLE AND DEVELOPMENT IMAGES
+# DOCKER FILE FOR VEHICLE AND DEVELOPMENT IMAGES
 # - The cloud-hosted images will rebuild each time you push changes to this file
-# - This Dockerfile will check the architecture of the target device and build the appropriate image
 
 FROM ros:humble-ros-base 
 
 ARG NAME=agrobot
 ARG DEBIAN_FRONTEND=noninteractive
-ARG TARGETARCH
 
 # Update and upgrade
 RUN apt update && apt upgrade -y
