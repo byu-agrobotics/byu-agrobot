@@ -51,6 +51,9 @@ USER $NAME
 # Set up ROS sourcing
 RUN echo "source /opt/ros/humble/setup.bash" >> /home/$NAME/.bashrc
 
+# Colorize the ROS 2 logging output
+RUN export "RCUTILS_COLORIZED_OUTPUT=1" >> /home/$NAME/.bashrc
+
 # Install the micro-ROS agent
 RUN mkdir microros_ws
 
@@ -89,9 +92,6 @@ RUN echo "export PATH=$PATH:/home/$NAME/.local/bin" >> /home/$NAME/.bashrc
 USER root
 RUN apt update && apt upgrade -y
 USER $NAME
-
-# Colorize the ROS 2 logging output
-RUN export "RCUTILS_COLORIZED_OUTPUT=1" >> /home/$NAME/.bashrc
 
 # Ashton's camera dependencies
 USER root

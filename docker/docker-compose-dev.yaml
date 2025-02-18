@@ -10,10 +10,10 @@ services:
     platform: linux/amd64
     container_name: agrobot
     user: agrobot
-    network_mode: host
+    network_mode: host # Allows the container to communicate on the host's network
     environment:
       DISPLAY: $DISPLAY # Required for GUI applications
-    privileged: true
+    privileged: true # Allows the container to access host devices
     volumes:
       - ../bag:/home/agrobot/bag:rw
       - ../config:/home/agrobot/config:rw
