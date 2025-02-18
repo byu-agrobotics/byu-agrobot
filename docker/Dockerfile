@@ -7,6 +7,7 @@ FROM ros:humble-ros-base
 
 ARG NAME=agrobot
 ARG DEBIAN_FRONTEND=noninteractive
+ARG TARGETARCH
 
 # Update and upgrade
 RUN apt update && apt upgrade -y
