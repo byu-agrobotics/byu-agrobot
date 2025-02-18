@@ -55,10 +55,11 @@ case $1 in
       tmux send-keys -t agrobot:0.3 "cat robot_params.yaml" ENTER
 
     else
-      printInfo "Attaching to the tmux session..."
+      printInfo "Attaching to an existing tmux session..."
     fi
 
     # Attach to the tmux session
+    printInfo "Press 'Ctrl + spacebar' then 'd' to detach from the session"
     tmux attach-session -t agrobot
     ;;
 esac
