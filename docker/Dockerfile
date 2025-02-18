@@ -79,19 +79,27 @@ RUN apt update && apt install -y \
     vim \
     nano \
     psmisc \
-    rsync 
+    rsync \
+    tmux \
+    mosh
 USER $NAME
+
+# Install graphical interface dependencies
+RUN apt update && apt install -y \
+    libx11-dev \
+    libxext-dev \
+    libxrender-dev \
+    libxrandr-dev \
+    qtbase5-dev \
+    libqt5x11extras5 \
+    python3-gi \
+    gir1.2-gtk-3.0 \
+    x11-apps \
+    ros-humble-rqt*
 
 # Install Python dependencies
-RUN pip3 install numpy==1.26.0 \
-    scipy \
-    matplotlib
+RUN pip3 install numpy==1.26.0
 RUN echo "export PATH=$PATH:/home/$NAME/.local/bin" >> /home/$NAME/.bashrc
-
-# Update and upgrade
-USER root
-RUN apt update && apt upgrade -y
-USER $NAME
 
 # Ashton's camera dependencies
 USER root
