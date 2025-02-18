@@ -1,6 +1,6 @@
 ## Setup and Contribution Guide
 
-This README gives a simple guide to working with the AgRobot repository.
+A simple guide to working with the AgRobot repository.
 
 --
 
