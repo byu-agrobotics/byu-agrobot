@@ -86,6 +86,7 @@ RUN apt update && apt install -y \
 USER $NAME
 
 # Install graphical interface dependencies
+USER root
 RUN apt update && apt install -y \
     libx11-dev \
     libxext-dev \
@@ -97,6 +98,7 @@ RUN apt update && apt install -y \
     gir1.2-gtk-3.0 \
     x11-apps \
     ros-humble-rqt*
+USER $NAME
 
 # Install Python dependencies
 RUN pip3 install numpy==1.26.0
