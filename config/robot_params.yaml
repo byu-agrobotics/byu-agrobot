@@ -1,6 +1,6 @@
 # Created by Nelson Durrant, Sep 2024
 #
-# VEHICLE-SPECIFIC ROS PARAMETER VALUES
+# ROBOT-SPECIFIC ROS PARAMETER VALUES
 
 drive_controller:
   ros__parameters:

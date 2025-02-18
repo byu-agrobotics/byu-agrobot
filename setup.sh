@@ -71,5 +71,3 @@ else
   git clone https://github.com/BYUAgrobotics/agrobot-teensy.git
 
 fi
-
-printWarning "Make sure to update the vehicle-specific configuration files in "config" now"

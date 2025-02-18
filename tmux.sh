@@ -52,7 +52,7 @@ case $1 in
       tmux send-keys -t agrobot:0.0 "bash launch.sh <task>" # Don't start just yet
       tmux send-keys -t agrobot:0.1 "bash test.sh" # Don't start just yet
       tmux send-keys -t agrobot:0.2 "bash init.sh <task>" # Don't start just yet
-      tmux send-keys -t agrobot:0.3 "cat vehicle_params.yaml" ENTER
+      tmux send-keys -t agrobot:0.3 "cat robot_params.yaml" ENTER
 
     else
       printInfo "Attaching to the tmux session..."
