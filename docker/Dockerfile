@@ -1,5 +1,5 @@
 # Created by Nelson Durrant, Sep 2024
-FROM ros:humble-ros-base 
+FROM ros:humble-ros-base
 
 ARG NAME=agrobot
 ARG DEBIAN_FRONTEND=noninteractive
