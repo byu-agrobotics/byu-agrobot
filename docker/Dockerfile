@@ -49,11 +49,11 @@ RUN ln -s /home/$NAME/.platformio/penv/bin/pio /usr/local/bin/pio
 RUN ln -s /home/$NAME/.platformio/penv/bin/piodebuggdb /usr/local/bin/piodebuggdb
 USER $NAME
 
-# Set up ROS sourcing
+# Set up ROS sourcing and colorized output
 RUN echo "source /opt/ros/humble/setup.bash" >> /home/$NAME/.bashrc
-
-# Colorize the ROS 2 logging output
-RUN export "RCUTILS_COLORIZED_OUTPUT=1" >> /home/$NAME/.bashrc
+RUN echo "source ~/microros_ws/install/setup.bash" >> /home/$NAME/.bashrc
+RUN echo "source ~/ros2_ws/install/setup.bash" >> /home/$NAME/.bashrc
+RUN echo "export RCUTILS_COLORIZED_OUTPUT=1" >> /home/$NAME/.bashrc
 
 # Install the micro-ROS agent
 RUN mkdir microros_ws
@@ -79,26 +79,19 @@ USER root
 RUN apt update && apt install -y \
     vim \
     nano \
-    psmisc \
     rsync \
+    git \
     tmux \
     mosh
 USER $NAME
 
 # Install graphical interface dependencies
-USER root
 RUN apt update && apt install -y \
-    libx11-dev \
-    libxext-dev \
-    libxrender-dev \
-    libxrandr-dev \
-    qtbase5-dev \
-    libqt5x11extras5 \
-    python3-gi \
-    gir1.2-gtk-3.0 \
     x11-apps \
+    x11-utils \
+    x11-xserver-utils \
+    xauth \
     ros-humble-rqt*
-USER $NAME
 
 # Install Python dependencies
 RUN pip3 install numpy==1.26.0

@@ -1,25 +1,24 @@
-# Created by Nelson Durrant, Sep 2024
-#
-# DOCKER COMPOSE FILE (DEVELOPMENT IMAGE, AMD64)
-# - Feel free to modify this locally to match your
-#   personal computer
-
+# Created by Nelson Durrant, Oct 2024
 services:
   agrobot:
     image: snelsondurrant/agrobot:latest
-    platform: linux/amd64
     container_name: agrobot
+    build: .
     user: agrobot
-    network_mode: host # Allows the container to communicate on the host's network
+    network_mode: host
+    privileged: true
     environment:
-      DISPLAY: $DISPLAY # Required for GUI applications
-    privileged: true # Allows the container to access host devices
+      - DISPLAY=$DISPLAY # Required for GUI applications
+      - QT_X11_NO_MITSHM=1 # Required for GUI applications
     volumes:
       - ../bag:/home/agrobot/bag:rw
       - ../config:/home/agrobot/config:rw
       - ../agrobot-ros2:/home/agrobot/ros2_ws
       - ../agrobot-teensy:/home/agrobot/teensy_ws
+      - /dev:/dev:rw
+      - /run/udev:/run/udev:ro
       - /etc/localtime:/etc/localtime:ro # Syncs the container's time with the host
+      - /var/run/docker.sock:/var/run/docker.sock # Required for docker in docker
       - /tmp/.X11-unix:/tmp/.X11-unix # Required for GUI applications
     command: /bin/bash
     stdin_open: true  # Equivalent to -it in docker run
