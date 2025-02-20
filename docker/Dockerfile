@@ -1,8 +1,4 @@
 # Created by Nelson Durrant, Sep 2024
-#
-# DOCKER FILE FOR ROBOT AND DEVELOPMENT IMAGES
-# - The cloud-hosted images will rebuild each time you push changes to this file
-
 FROM ros:humble-ros-base 
 
 ARG NAME=agrobot
