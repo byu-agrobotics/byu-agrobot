@@ -41,12 +41,9 @@ if [ "$(uname -m)" == "aarch64" ]; then
   mkdir bag
 
   # Set up udev rules
-  sudo cp config/local/00-teensy.rules /etc/udev/rules.d/00-teensy.rules
+  sudo cp config/udev/00-teensy.rules /etc/udev/rules.d/00-teensy.rules
   sudo udevadm control --reload-rules
   sudo udevadm trigger
-
-  # Set up config files
-  sudo cp config/local/.tmux.conf ~/.tmux.conf
 
   # Copy repos from GitHub
   git clone https://github.com/BYUAgrobotics/agrobot-ros2.git
@@ -62,9 +59,6 @@ else
 
   # Set up volumes
   mkdir bag
-
-  # Set up config files
-  sudo cp config/local/.tmux.conf ~/.tmux.conf
 
   # Copy repos from GitHub
   git clone https://github.com/BYUAgrobotics/agrobot-ros2.git
