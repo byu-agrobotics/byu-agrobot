@@ -83,12 +83,14 @@ RUN apt update && apt install -y \
 USER $NAME
 
 # Install graphical interface dependencies
+USER root
 RUN apt update && apt install -y \
     x11-apps \
     x11-utils \
     x11-xserver-utils \
     xauth \
     ros-humble-rqt*
+USER $NAME
 
 # Install Python dependencies
 RUN pip3 install numpy==1.26.0
