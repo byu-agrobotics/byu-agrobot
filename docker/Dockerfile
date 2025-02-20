@@ -21,6 +21,7 @@ RUN apt update && apt install -y tytools
 # Set up a new user
 RUN useradd -ms /bin/bash $NAME
 RUN usermod -aG sudo $NAME
+RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 RUN usermod -aG dialout $NAME
 RUN usermod -aG video $NAME
 RUN echo "$NAME:$NAME" | chpasswd
