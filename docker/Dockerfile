@@ -51,6 +51,7 @@ RUN echo "source /opt/ros/humble/setup.bash" >> /home/$NAME/.bashrc
 RUN echo "source ~/microros_ws/install/setup.bash" >> /home/$NAME/.bashrc
 RUN echo "source ~/ros2_ws/install/setup.bash" >> /home/$NAME/.bashrc
 RUN echo "export RCUTILS_COLORIZED_OUTPUT=1" >> /home/$NAME/.bashrc
+RUN touch ~/.hushlogin
 
 # Install the micro-ROS agent
 RUN mkdir microros_ws
