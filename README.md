@@ -2,7 +2,7 @@
 
 --
 
-**Quickstart:**
+**Getting Started:**
 
 - Install WSL2 on your Windows machine by following the instructions [here](https://docs.microsoft.com/en-us/windows/wsl/install).
 
@@ -32,7 +32,7 @@
 
 --
 
-**Tutorials:**
+**Helpful Resources:**
 
 GitHub Quickstart Tutorial - [https://docs.github.com/en/get-started/start-your-journey/hello-world](https://docs.github.com/en/get-started/start-your-journey/hello-world)
 
