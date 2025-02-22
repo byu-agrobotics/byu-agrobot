@@ -1,3 +1,5 @@
+![Agrobotics_logo_3](https://github.com/user-attachments/assets/05b80ba6-2f75-4910-b746-227a7ad1602a)
+
 ## Setup and Contribution Guide
 
 A simple guide to working with the AgRobot repository.
