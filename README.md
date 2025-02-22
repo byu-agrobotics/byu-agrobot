@@ -1,4 +1,4 @@
-![Agrobotics_logo_3](https://github.com/user-attachments/assets/05b80ba6-2f75-4910-b746-227a7ad1602a)
+<img src="https://github.com/user-attachments/assets/05b80ba6-2f75-4910-b746-227a7ad1602a" width="300">
 
 ## Setup and Contribution Guide
 
