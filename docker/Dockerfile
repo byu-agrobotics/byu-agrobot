@@ -46,13 +46,6 @@ RUN ln -s /home/$NAME/.platformio/penv/bin/pio /usr/local/bin/pio
 RUN ln -s /home/$NAME/.platformio/penv/bin/piodebuggdb /usr/local/bin/piodebuggdb
 USER $NAME
 
-# Set up ROS sourcing and colorized output
-RUN echo "source /opt/ros/humble/setup.bash" >> /home/$NAME/.bashrc
-RUN echo "source /home/$NAME/microros_ws/install/setup.bash" >> /home/$NAME/.bashrc
-RUN echo "source /home/$NAME/ros2_ws/install/setup.bash" >> /home/$NAME/.bashrc
-RUN echo "export RCUTILS_COLORIZED_OUTPUT=1" >> /home/$NAME/.bashrc
-RUN touch ~/.hushlogin
-
 # Install the micro-ROS agent
 RUN mkdir microros_ws
 
@@ -71,6 +64,13 @@ RUN source /opt/ros/humble/setup.bash && source install/setup.bash && ros2 run m
 SHELL ["/bin/sh", "-c"]
 
 WORKDIR /home/$NAME
+
+# Set up ROS sourcing and colorized output
+RUN echo "source /opt/ros/humble/setup.bash" >> /home/$NAME/.bashrc
+RUN echo "source /home/$NAME/microros_ws/install/setup.bash" >> /home/$NAME/.bashrc
+RUN echo "source /home/$NAME/ros2_ws/install/setup.bash" >> /home/$NAME/.bashrc
+RUN echo "export RCUTILS_COLORIZED_OUTPUT=1" >> /home/$NAME/.bashrc
+RUN touch ~/.hushlogin
 
 # Install dependencies
 USER root
