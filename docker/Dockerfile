@@ -48,8 +48,8 @@ USER $NAME
 
 # Set up ROS sourcing and colorized output
 RUN echo "source /opt/ros/humble/setup.bash" >> /home/$NAME/.bashrc
-RUN echo "source ~/microros_ws/install/setup.bash" >> /home/$NAME/.bashrc
-RUN echo "source ~/ros2_ws/install/setup.bash" >> /home/$NAME/.bashrc
+RUN echo "source /home/$NAME/microros_ws/install/setup.bash" >> /home/$NAME/.bashrc
+RUN echo "source /home/$NAME/ros2_ws/install/setup.bash" >> /home/$NAME/.bashrc
 RUN echo "export RCUTILS_COLORIZED_OUTPUT=1" >> /home/$NAME/.bashrc
 RUN touch ~/.hushlogin
 
@@ -95,7 +95,6 @@ USER $NAME
 
 # Install Python dependencies
 RUN pip3 install numpy==1.26.0
-RUN echo "export PATH=$PATH:/home/$NAME/.local/bin" >> /home/$NAME/.bashrc
 
 # Ashton's camera dependencies
 USER root
