@@ -23,11 +23,11 @@ function printError {
 
 case $1 in
 	"down")
-		printWarning "Stopping the AgRobot container..."
+		printWarning "Stopping the agrobot container..."
 		docker compose -f docker/docker-compose.yaml down
 		;;
 	*)
-		printInfo "Loading the AgRobot container..."
+		printInfo "Loading the agrobot container..."
 		docker compose -f docker/docker-compose.yaml up -d
 
 		# Check if a 'agrobot' tmux session already exists

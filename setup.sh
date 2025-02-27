@@ -20,7 +20,7 @@ function printError {
 
 if [ "$(uname -m)" == "aarch64" ]; then
 
-	printInfo "Setting up AgRobot on a Raspberry Pi 5"
+	printInfo "Setting up byu-agrobot on a Raspberry Pi 5"
 				
 	# Install Docker if not already installed
 	if ! [ -x "$(command -v docker)" ]; then
@@ -46,12 +46,12 @@ if [ "$(uname -m)" == "aarch64" ]; then
 	sudo udevadm trigger
 
 	# Copy repos from GitHub
-	git clone https://github.com/BYUAgrobotics/agrobot-ros2.git
-	git clone https://github.com/BYUAgrobotics/agrobot-teensy.git
+	git clone https://github.com/byu-agrobotics/agrobot-ros2.git
+	git clone https://github.com/byu-agrobotics/agrobot-teensy.git
 
 else
 
-	printInfo "Setting up AgRobot on a development machine"
+	printInfo "Setting up byu-agrobot on a development machine"
 
 	# Install dependencies
 	sudo apt update
@@ -61,7 +61,7 @@ else
 	mkdir bag
 
 	# Copy repos from GitHub
-	git clone https://github.com/BYUAgrobotics/agrobot-ros2.git
-	git clone https://github.com/BYUAgrobotics/agrobot-teensy.git
+	git clone https://github.com/byu-agrobotics/agrobot-ros2.git
+	git clone https://github.com/byu-agrobotics/agrobot-teensy.git
 
 fi

@@ -5,7 +5,7 @@
 # - Make sure you run this from the root of the top-level repo
 
 # Docker updates
-docker pull snelsondurrant/agrobot:latest
+docker pull byuagrobotics1/agrobot:latest
 
 # GitHub updates
 git pull
