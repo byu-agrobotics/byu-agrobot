@@ -20,7 +20,7 @@ function printError {
 
 if [ "$(uname -m)" == "aarch64" ]; then
 
-	printInfo "Setting up byu-agrobot on a Raspberry Pi 5"
+	printInfo "Setting up agrobot on a Raspberry Pi 5"
 				
 	# Install Docker if not already installed
 	if ! [ -x "$(command -v docker)" ]; then
@@ -51,7 +51,7 @@ if [ "$(uname -m)" == "aarch64" ]; then
 
 else
 
-	printInfo "Setting up byu-agrobot on a development machine"
+	printInfo "Setting up agrobot on a development machine"
 
 	# Install dependencies
 	sudo apt update
